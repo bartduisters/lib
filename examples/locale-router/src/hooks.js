@@ -27,18 +27,10 @@ export const handle = async ({ event, resolve }) => {
       // Fetch the redirected route
       const response = await fetch(redirectTo, request);
 
-      // Parse body
-      const body = await response.text();
-
       // Serve the redirected route.
       // In this case we don't have to set the html 'lang' attribute
       // as the default locale is already included in our app.html.
-      return new Response(body, {
-        headers: new Headers({
-          ...response.headers,
-          'Content-Type': 'text/html',
-        }), status: 200,
-      });
+      return response;
     }
 
 
