@@ -24,10 +24,16 @@ export const handle = async ({ event, resolve }) => {
       // Replace the trailing slash as `svelte.config` is set to `trailingSlash: 'never'`
       const redirectTo = `${origin}/${locale}${pathname}`.replace(/\/$/, '');
 
+      // Fetch the redirected route
+      const response = await fetch(redirectTo, request);
+
+      // Parse body
+      const body = await response.text();
+
       // Serve the redirected route.
       // In this case we don't have to set the html 'lang' attribute
       // as the default locale is already included in our app.html.
-      return fetch(redirectTo, request);
+      return new Response(body, { headers: response.headers });
     }
 
 
