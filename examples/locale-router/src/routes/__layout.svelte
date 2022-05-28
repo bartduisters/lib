@@ -7,7 +7,7 @@
     
     const supportedLocales = locales.get();
 
-    let lang = supportedLocales.find((l) => `${l}`.toLowerCase() === `${pathname.match(/[^/]+?(?=\/|$)/)}`.toLowerCase()) || defaultLocale;
+    const lang = supportedLocales.find((l) => `${l}`.toLowerCase() === `${pathname.match(/[^/]+?(?=\/|$)/)}`.toLowerCase()) || defaultLocale;
 
     const route = pathname.replace(new RegExp(`^/${lang}`), '');
 
