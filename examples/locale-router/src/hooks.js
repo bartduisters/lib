@@ -18,7 +18,7 @@ export const handle = async ({ event, resolve }) => {
 
     // If route locale is not supported
     if (!locale) {
-      // Set default locale if user preferred locale does not match
+      // Set default locale
       locale = defaultLocale;
 
       // Replace the trailing slash as `svelte.config` is set to `trailingSlash: 'never'`
