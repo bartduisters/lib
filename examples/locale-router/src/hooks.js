@@ -33,7 +33,12 @@ export const handle = async ({ event, resolve }) => {
       // Serve the redirected route.
       // In this case we don't have to set the html 'lang' attribute
       // as the default locale is already included in our app.html.
-      return new Response(body, { headers: response.headers });
+      return new Response(body, {
+        headers: new Headers({
+          ...response.headers,
+          'Content-Type': 'text/html',
+        }), status: 200,
+      });
     }
 
 
